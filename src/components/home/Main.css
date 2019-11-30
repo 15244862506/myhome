@@ -149,3 +149,21 @@
   right: 15px;
   top: 0;
 }
+/* 房屋样式 */
+.home-hire-title {
+  height: 40px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 40px;
+  padding-left: 10px;
+  border-bottom: 1px solid #cecece;
+}
+
+.ui.items > .item > .image {
+  margin-left: 10px;
+  margin-top: 6px;
+}
+
+.ui.items > .item > .content > .description:last-child {
+  color: orange;
+}

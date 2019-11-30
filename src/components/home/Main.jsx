@@ -31,65 +31,88 @@ class Main extends React.Component {
     this.getFaqList()
     this.getHouseList()
   }
-  // 获取轮播图数据
-  getImageList = async () => {
-    let res = await this.axios.post('homes/swipe', null, {
-      // header: {
-      //   Authorization: localStorage.getItem('myToken')
-      // }
+  // // 获取轮播图数据
+  // getImageList = async () => {
+  //   let res = await this.axios.post('homes/swipe', null, {
+  //     // header: {
+  //     //   Authorization: localStorage.getItem('myToken')
+  //     // }
+  //   })
+  //   // console.log(res);
+  //   let { meta, data } = res
+  //   if (meta.status === 200) {
+  //     this.setState({
+  //       imageList: data.list
+  //     })
+  //   }
+  // }
+  // // 获取菜单数据
+  // getMenuList = async () => {
+  //   let res = await this.axios.post('homes/menu')
+  //   let { meta, data } = res
+  //   // console.log(res);
+  //   if (meta.status === 200) {
+  //     this.setState({
+  //       menuList: data.list
+  //     })
+  //   }
+  // }
+  // // 获取咨询数据
+  // getInfoList = async () => {
+  //   let res = await this.axios.post('homes/info')
+  //   let { meta, data } = res
+  //   // console.log(res);
+  //   if (meta.status === 200) {
+  //     this.setState({
+  //       infoList: data.list
+  //     })
+  //   }
+  // }
+  // // 获取问答数据
+  // getFaqList = async () => {
+  //   let res = await this.axios.post('homes/faq')
+  //   let { meta, data } = res
+  //   // console.log(res);
+  //   if (meta.status === 200) {
+  //     this.setState({
+  //       faqList: data.list
+  //     })
+  //   }
+  // }
+  // // 获取问答数据
+  // getHouseList = async () => {
+  //   let res = await this.axios.post('homes/house')
+  //   let { meta, data } = res
+  //   if (meta.status === 200) {
+  //     this.setState({
+  //       houseList: data.list
+  //     })
+  //   }
+  // }
+  doRequest = (url, dataName) => {
+    return this.axios.post(url).then(res => {
+      let { meta, data } = res
+      if (meta.status === 200) {
+        this.setState({
+          [dataName]: data.list
+        })
+      }
     })
-    // console.log(res);
-    let { meta, data } = res
-    if (meta.status === 200) {
-      this.setState({
-        imageList: data.list
-      })
-    }
   }
-  // 获取菜单数据
-  getMenuList = async () => {
-    let res = await this.axios.post('homes/menu')
-    let { meta, data } = res
-    // console.log(res);
-    if (meta.status === 200) {
-      this.setState({
-        menuList: data.list
-      })
-    }
+  // 页面加载完成，需要发送ajax请求，获取轮播图数据
+  async componentDidMount() {
+    // Promise.all()
+    await Promise.all([
+      this.doRequest('homes/swipe', 'imgList'),
+      this.doRequest('homes/menu', 'menuList'),
+      this.doRequest('homes/info', 'infoList'),
+      this.doRequest('homes/faq', 'faqList'),
+      this.doRequest('homes/house', 'houseList')
+    ])
+    this.setState({
+      loading: false
+    })
   }
-  // 获取咨询数据
-  getInfoList = async () => {
-    let res = await this.axios.post('homes/info')
-    let { meta, data } = res
-    // console.log(res);
-    if (meta.status === 200) {
-      this.setState({
-        infoList: data.list
-      })
-    }
-  }
-  // 获取问答数据
-  getFaqList = async () => {
-    let res = await this.axios.post('homes/faq')
-    let { meta, data } = res
-    // console.log(res);
-    if (meta.status === 200) {
-      this.setState({
-        faqList: data.list
-      })
-    }
-  }
-  // 获取问答数据
-  getHouseList = async () => {
-    let res = await this.axios.post('homes/house')
-    let { meta, data } = res
-    if (meta.status === 200) {
-      this.setState({
-        houseList: data.list
-      })
-    }
-  }
-
 
   render() {
     return (
@@ -102,6 +125,9 @@ class Main extends React.Component {
           />
         </div>
         <div className="content">
+          <Dimmer inverted active={this.state.loading} page>
+            <Loader>Loading</Loader>
+          </Dimmer>
           {/* 轮播图 */}
           <ImageGallery
             items={this.state.imageList}
