@@ -9,3 +9,12 @@
 ```bash
 npm install react-router-dom 
 ```
+
+## 引入semantic-ui-react组件库
+
+ - 安装
+
+```npm
+npm i semantic-ui-react
+ npm i semantic-ui-css
+```
