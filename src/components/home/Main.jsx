@@ -103,7 +103,7 @@ class Main extends React.Component {
   async componentDidMount() {
     // Promise.all()
     await Promise.all([
-      this.doRequest('homes/swipe', 'imgList'),
+      this.doRequest('homes/swipe', 'imageList'),
       this.doRequest('homes/menu', 'menuList'),
       this.doRequest('homes/info', 'infoList'),
       this.doRequest('homes/faq', 'faqList'),
