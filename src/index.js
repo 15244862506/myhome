@@ -9,7 +9,8 @@ import axios from "axios";
 //把axios对象放到react组件的原型上面去，将来所以的react组件都可以访问到axios对象了
 React.Component.prototype.axios = axios
 // 给axios配置默认的全局路径
-axios.defaults.baseURL = 'http://47.96.21.88:8086/'
+axios.defaults.baseURL = 'http://localhost:9999/'
+// axios.defaults.baseURL = 'http://47.96.21.88:8086/'
 // 给axios配置一个响应拦截器, 直接把data中的数据返回
 axios.interceptors.response.use(function (response) {
   console.log(response.data);

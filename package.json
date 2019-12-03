@@ -8,6 +8,7 @@
     "less-loader": "^5.0.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
+    "react-avatar-editor": "^12.0.0-beta.0",
     "react-dom": "^16.12.0",
     "react-image-gallery": "^0.9.1",
     "react-router-dom": "^5.1.2",

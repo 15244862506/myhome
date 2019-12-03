@@ -46,7 +46,9 @@ class Login extends React.Component {
     if (meta.status === 200) {
       // 1. 把token保存到浏览器本地
       localStorage.setItem('myToken', data.token)
-      // 2.跳转到home去
+      // 2.把userid存储起来
+      localStorage.setItem('uid', data.uid)
+      // 3.跳转到home去
       history.push('/home')
       // console.log("登录成功了,请跳转到主页去")
     } else {

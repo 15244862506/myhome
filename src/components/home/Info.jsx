@@ -150,6 +150,7 @@ class Loader extends React.Component {
     })
   }
 
+
   refresh = async (resolve, reject) => {
     // 重置初始的条数
     // react的setState是异步的，通过setState修改react内部的数据，不是立即更新的
