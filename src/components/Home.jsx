@@ -5,10 +5,10 @@ import { Grid, Icon } from "semantic-ui-react";
 // 导入路由
 import { NavLink, Switch, Route } from "react-router-dom";
 // 引入路由组件
-import Chat from './home/Chat';
-import Info from './home/Info';
-import Main from './home/Main';
-import My from './home/My';
+import Chat from './home/chat/Chat';
+import Info from './home/info/Info';
+import Main from './home/main/Main';
+import My from './home/my/My';
 
 class Home extends React.Component {
   // 点标记语法
@@ -40,7 +40,7 @@ class Home extends React.Component {
 
               </Grid.Column>
               <Grid.Column>
-                <NavLink to="/home/chat">
+                <NavLink to="/home/chat/chat">
                   <Icon name="envelope"></Icon>
                   <p>微聊</p>
                 </NavLink>
